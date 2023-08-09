@@ -1,7 +1,17 @@
 let fileInput = document.getElementById("fileInput");
 let btnDownload = document.getElementById("download"); 
 
+fileInput.addEventListener("input",()=> {
+    if(fileInput.value !== ""){
+        btnDownload.removeAttribute("disabled");
+    }else {
+        btnDownload.setAttribute("disabled");
+    }
+})
 btnDownload.addEventListener("click",(e)=> {
+    if(fileInput.value === ""){
+        return ; 
+    }
     e.preventDefault(); 
     fetchFile(fileInput.value); 
 }); 
